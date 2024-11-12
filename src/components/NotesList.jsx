@@ -1,7 +1,7 @@
 import React from 'react';
 import NotesItem from './NotesItem'
 
-export default function NotesList({ notes, onDelete, onArchive }) {
+export default function NotesList() {
   const activeNotes = notes.filter((note) => note.archived == false);
   const archivedNotes = notes.filter((note) => note.archived == true);
   return (
