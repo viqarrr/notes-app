@@ -7,7 +7,7 @@ const todoSlice = createSlice({
     data: [],
     filteredData: []
   },
-  reducer:{
+  reducers:{
     search: (state, action) => {
       if(action.payload.length == 0) {
         state.data = state.filteredData;
@@ -27,17 +27,20 @@ const todoSlice = createSlice({
     })
     builder.addCase(editTodo.fulfilled, (state, action) => {
       state.data = state.data.map((todo) => {
-        if (todo.id === action.payload) {
-          return { ...todo, archived: !todo.archived };
+        if (todo.id === action.payload.id) {
+          return { ...todo, ...action.payload};
         }
+        console.log(todo)
         return todo
         });
       state.filteredData = state.data
     })
     builder.addCase(deleteTodo.fulfilled, (state, action) => {
       state.data = state.data.filter(todo => {return todo.id !== action.payload})
+      state.filteredData = state.data
     })
   }
 })
 
-export const todoReducer = todoSlice.reducer;
+export const { search } = todoSlice.actions
+export default todoSlice.reducer;

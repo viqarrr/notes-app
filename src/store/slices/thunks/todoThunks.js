@@ -4,7 +4,7 @@ import axios from "axios";
 const addTodo = createAsyncThunk(
   'users/addTodo', 
   async(todo) => {
-  const response = await axios.post('https://localhost:5174/todos')
+  const response = await axios.post('http://localhost:5174/todos', todo)
   return response.data
   },
 )
@@ -12,7 +12,7 @@ const addTodo = createAsyncThunk(
 const fetchTodos = createAsyncThunk(
   'users/fetchTodos', 
   async() => {
-    const response = await axios.get('https://localhost:5174/todos')
+    const response = await axios.get('http://localhost:5174/todos')
     return response.data
   },
 )
@@ -20,16 +20,17 @@ const fetchTodos = createAsyncThunk(
 const editTodo = createAsyncThunk(
   'users/editTodos', 
   async(todo) => {
-  const response = await axios.put(`https://localhost:5174/todos/${todo.id}`, todo)
+  const response = await axios.put( `http://localhost:5174/todos/${todo.id}`, todo)
   return response.data
   },
 )
 
 const deleteTodo = createAsyncThunk(
   'users/deleteTodos', 
-  async(todo) => {
-  await axios.delete(`https://localhost:5174/todos/${todo.id}`)
-  },
+  async(id) => {
+  await axios.delete(`http://localhost:5174/todos/${id}`)
+  return id
+  }
 )
 
 export { addTodo, fetchTodos, editTodo, deleteTodo }

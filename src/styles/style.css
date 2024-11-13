@@ -24,7 +24,13 @@ input::placeholder, textarea::placeholder {
   font-weight: bold;
 }
 
-.note-app__header {
+label{
+  margin-bottom: 0;
+  color: #ddd;
+  font-weight: bolder;
+}
+
+.todo-app__header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,62 +38,71 @@ input::placeholder, textarea::placeholder {
   border-bottom: 1px solid #aaa;
 }
 
-.note-app__header h1 {
+.todo-app__header h1 {
   margin: 8px 0;
   flex: 1;
   color: white;
 }
 
 
-.note-app__body {
+.todo-app__body {
   max-width: 1000px;
   margin: 16px auto;
   padding: 12px;
 }
 
-.note-app__body h2 {
-  font-weight: normal;
+.todo-app__body h2 {
+  font-weight: 500;
   margin: 16px 0;
 }
 
-.note-input {
-  margin: 1rem auto;
+.todo-input {
+  margin:.5rem auto;
   max-width: 500px;
   margin-bottom: 48px;
 }
 
-.note-input input, .note-input textarea {
+.todo-input input, .todo-input textarea {
   display: block;
   width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
 }
 
-.note-input textarea {
+.todo-input textarea {
   height: 10rem;
   font-size: 0.65rem;
 }
 
-.note-input textarea::placeholder {
+.todo-input textarea::placeholder {
   height: 10rem;
   font-size: 1rem;
 }
 
-.note-input__title {
+.todo-input__title {
   font-weight: bold;
 }
 
-.note-input__title__char-limit {
+.todo-input__title__char-limit {
+  display: flex;
+  align-items: end;
   font-size: 14px;
   text-align: right;
   color: #aaa;
 }
 
-.note-input__body {
+.labels {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-input__body {
   min-height: 175px;
 }
 
-.note-input button {
+.todo-input button {
   display: block;
   width: 100%;
   padding: .8rem;
@@ -99,7 +114,7 @@ input::placeholder, textarea::placeholder {
   cursor: pointer;
 }
 
-.notes-list {
+.todos-list {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(min-content, max-content);
@@ -107,12 +122,12 @@ input::placeholder, textarea::placeholder {
   margin-bottom: 48px;
 }
 
-.notes-list__empty-message {
+.todos-list__empty-message {
   text-align: center;
   color: #aaa;
 }
 
-.note-item {
+.todo-item {
   border: 1px solid #aaa;
   border-radius: 4px;
   overflow: hidden;
@@ -120,34 +135,34 @@ input::placeholder, textarea::placeholder {
   flex-direction: column;
 }
 
-.note-item__content {
+.todo-item__content {
   flex: 1;
 }
 
-.note-item__title {
+.todo-item__title {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   margin-bottom: 4px;
 }
 
-.note-item__date {
+.todo-item__date {
   font-size: 12px;
   margin-bottom: 8px;
   color: #aaa;
 }
 
-.note-item__body {
+.todo-item__body {
   padding: 12px; 
   font-size: 14px;
 }
 
-.note-item__action {
+.todo-item__action {
   margin-top: 1rem;
   display: flex;
 }
 
-.note-item__delete-button,.note-item__archive-button {
+.todo-item__delete-button,.todo-item__archive-button {
   width: 100%;
   padding: .6rem;
   background-color: transparent;
@@ -159,41 +174,38 @@ input::placeholder, textarea::placeholder {
   cursor: pointer;
 }
 
-.note-item__delete-button {
+.todo-item__delete-button {
   border-right: 1px solid #aaa;
   color: #ff5f52;
 }
 
-.note-item__archive-button {
+.todo-item__archive-button {
   color: #fff263;
 }
 
-.note-item__archive-button:hover {
+.todo-item__archive-button:hover {
   color: #c49000;
 }
 
-.note-item__delete-button:hover {
+.todo-item__delete-button:hover {
   color: #b00020;
 }
 
 @media only screen and (min-width: 500px) {
-  .notes-list {
+  .todos-list {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .notes-list {
+  .todos-list {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .note-search input {
+  .todo-search input {
     min-width: 400px;
   }
-}
-
-@media only screen and (min-width: 800px) {
-  .notes-list {
+  .todos-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
